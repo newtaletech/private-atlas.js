@@ -1,0 +1,25 @@
+{
+  "name": "@newtale/tech",
+  "version": "1.0.0",
+  "description": "Biblioteca focada em LOGs avançados da NewTale",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/newtaletech/private-atlas.js.git"
+  },
+  "keywords": [
+    "logging",
+    "logs",
+    "newtale",
+    "newtale-logs"
+  ],
+  "author": "Bruno Cardoso",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/newtaletech/private-atlas.js/issues"
+  },
+  "homepage": "https://github.com/newtaletech/private-atlas.js#readme"
+}
