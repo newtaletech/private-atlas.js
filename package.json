@@ -4,7 +4,7 @@
   "description": "Repositório do projeto Atlas",
   "main": "index.js",
   "scripts": {
-    "test": "node ./src/index.ts",
+    "test": "ts-node ./src/index.ts",
     "dev": "node ./dist/index.js",
     "build": "npx tsc"
   },
