@@ -1,13 +1,12 @@
-import IAtlas from "interface/IAtlas";
 import IAtlasAllConfig from "./interface/IAtlasAllConfig";
-import IAtlasFactory from "interface/IAtlasFactory";
+import AtlasFactory from "factory/AtlasFactory";
 
-class Atlas implements IAtlas {
-    static enableConsole: boolean = true;
-    static enableDebug: boolean = true;
-    private _atlasFactory: IAtlasFactory;
+class Atlas{
+    static enableConsole: boolean = false;
+    static enableDebug: boolean = false;
+    private _atlasFactory: AtlasFactory;
 
-    constructor(atlasFactory: IAtlasFactory){
+    constructor(atlasFactory: AtlasFactory){
       this._atlasFactory = atlasFactory;
     }
 

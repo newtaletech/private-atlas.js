@@ -1,6 +1,4 @@
-import IAtlasFactory from "interface/IAtlasFactory";
-
-class AtlasFactory implements IAtlasFactory{
+class AtlasFactory{
     logInfoFactory(mensage: string): void {
         console.log("%cINFO: "+mensage, "color: #FFFFFF");
     }
