@@ -1,15 +1,22 @@
-class AtlasFactory{
-    logInfoFactory(mensage: string): void {
-        console.log("%cINFO: "+mensage, "color: #FFFFFF");
-    }
-    logDebugFactory(mensage: string): void {
-        console.log("%cDEBUG: "+mensage, "color: #0085b9");
-    }
-    logWarningFactory(mensage: string): void {
-        console.log("%cWARN: "+mensage, "color: #FFB200");
-    }
-    logErrorFactory(mensage: string): void {
-        console.log("%cERROR: "+mensage, "color: #ff0000");
+class AtlasFactory {
+    static logFactory(message: string, num: number): void {
+        switch(num) { 
+            case 1: { 
+               console.log("@INFO" + `: ${message}`); 
+               break; 
+            } 
+            case 2: { 
+               console.log("\x1b[34m" + "@DEBUG" + "\x1b[0m" + `: ${message}`);
+               break; 
+            } 
+            case 3: { 
+               console.log("\x1b[33m" + "@WARN" + "\x1b[0m" + `: ${message}`); 
+               break; 
+            }
+            case 4: {
+               console.log("\x1b[31m" + "@ERROR" + "\x1b[0m" + `: ${message}`);
+            }
+         } 
     }
 }
 

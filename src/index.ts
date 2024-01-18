@@ -1,16 +1,14 @@
 import Atlas from './atlas';
-import AtlasFactory from 'factory/AtlasFactory';
 
-class Index{
+class Index {
     public static run(): void {
-        const atlasFactory = new AtlasFactory();
-        const atlas = new Atlas(atlasFactory);
+        const atlas = new Atlas();
 
         Atlas.logConfig({
-          enableConsole: true,
-          enableDebug: true,
+            enableConsole: false,
+            enableDebug: true,
         });
-    
+
         atlas.logInfo("Ocklay é o que nois porta");
         atlas.logDebug("Bebida rosa");
         atlas.logWarning("Cuidado ela está ficando sensual");
@@ -18,4 +16,4 @@ class Index{
     }
 }
 
-Index.run;
+Index.run();

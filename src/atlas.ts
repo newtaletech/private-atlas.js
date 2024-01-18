@@ -1,40 +1,30 @@
 import IAtlasAllConfig from "./interface/IAtlasAllConfig";
-import AtlasFactory from "factory/AtlasFactory";
+import AtlasFactory from "./factory/AtlasFactory";
 
-class Atlas{
+class Atlas {
     static enableConsole: boolean = false;
     static enableDebug: boolean = false;
-    private _atlasFactory: AtlasFactory;
-
-    constructor(atlasFactory: AtlasFactory){
-      this._atlasFactory = atlasFactory;
-    }
 
     static logConfig(config: IAtlasAllConfig): void {
       Atlas.enableConsole = config.enableConsole!;
       Atlas.enableDebug = config.enableDebug!;
     }
 
-    logInfo(mensage: string): void {
-      if(Atlas.enableConsole!){
-        this._atlasFactory.logInfoFactory(mensage);
-      }
+    logInfo(message: string): void {
+      AtlasFactory.logFactory(message, 1);
     }
-    logDebug(mensage: string): void {
-      if(Atlas.enableConsole! && Atlas.enableDebug!){
-        this._atlasFactory.logDebugFactory(mensage);
-      }
+
+    logDebug(message: string): void {
+      AtlasFactory.logFactory(message, 2);
     }
-    logWarning(mensage: string): void {
-      if(Atlas.enableConsole!){
-        this._atlasFactory.logWarningFactory(mensage);
-      }
+
+    logWarning(message: string): void {
+      AtlasFactory.logFactory(message, 3);
     }
-    logError(mensage: string): void {
-      if(Atlas.enableConsole!){
-        this._atlasFactory.logErrorFactory(mensage);
-      }
+
+    logError(message: string): void {
+      AtlasFactory.logFactory(message, 4);
     }
-  }
+}
 
 export default Atlas;
