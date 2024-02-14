@@ -51,24 +51,24 @@ class AtlasFactory {
 }
 
    static logFactory(message: string, num: number, path: string): void {
-        switch(num) { 
-            case 1: { 
-               console.log(`${AtlasFactory.dateNow} ${path} [${AtlasFactory.generateRandomLogId()}] @INFO: ${message}`); 
-               break; 
-            } 
-            case 2: { 
-               console.log(`\t${AtlasFactory.dateNow} ${path}#\u001B[30m\u001B[43m${AtlasFactory.getCallingMethodName()}\x1b[0m [${AtlasFactory.generateRandomLogId()}] @\x1b[34mDEBUG\x1b[0m: ${message}`);
-               break; 
-            } 
-            case 3: { 
-               console.log(`${AtlasFactory.dateNow} ${path} [${AtlasFactory.generateRandomLogId()}] @\x1b[33mWARN\x1b[0m: ${message}`); 
-               break; 
-            }
-            case 4: {
-               console.log(`${AtlasFactory.dateNow} ${path} [${AtlasFactory.generateRandomLogId()}] @\x1b[31mERROR\x1b[0m: ${message}`);
-            }
+      switch(num) { 
+         case 1: { 
+            console.log(`${AtlasFactory.dateNow} ${path} [${AtlasFactory.generateRandomLogId()}] @INFO: ${message}`); 
+            break; 
          } 
-    }
+         case 2: { 
+            console.log(`\t${AtlasFactory.dateNow} ${path}#\u001B[30m\u001B[43m${AtlasFactory.getCallingMethodName()}\x1b[0m [${AtlasFactory.generateRandomLogId()}] @\x1b[34mDEBUG\x1b[0m: ${message}`);
+            break; 
+         } 
+         case 3: { 
+            console.log(`${AtlasFactory.dateNow} ${path} [${AtlasFactory.generateRandomLogId()}] @\x1b[33mWARN\x1b[0m: ${message}`); 
+            break; 
+         }
+         case 4: {
+            console.log(`${AtlasFactory.dateNow} ${path} [${AtlasFactory.generateRandomLogId()}] @\x1b[31mERROR\x1b[0m: ${message}`);
+         }
+      } 
+   }
 }
 
 export default AtlasFactory;
