@@ -1,0 +1,19 @@
+{
+  "name": "private-atlas",
+  "version": "1.0.0",
+  "description": "Repositório do projeto Atlas",
+  "main": "index.js",
+  "scripts": {
+    "test": "ts-node ./src/index.ts",
+    "dev": "node ./dist/index.js",
+    "build": "npx tsc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.10.6",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.3.3"
+  }
+}
