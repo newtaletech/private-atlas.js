@@ -1,7 +1,6 @@
 import IAtlasAllConfig from "./interface/IAtlasAllConfig";
 import AtlasFactory from "./factory/AtlasFactory";
-import * as path from 'path';
-
+import { LogsEnum } from "./models/enum/LogsEnum";
 
 class Atlas {
     static enableConsole: boolean = false;
@@ -18,15 +17,15 @@ class Atlas {
     }
 
     logInfo(message: string): void {
-      AtlasFactory.logFactory(message, 1, Atlas.className);
+      AtlasFactory.logFactory(message, LogsEnum.Info, Atlas.className);
     }
 
     logDebug(message: string): void {
-      AtlasFactory.logFactory(message, 2, Atlas.className, );
+      AtlasFactory.logFactory(message, LogsEnum.Debug, Atlas.className);
     }
 
     logWarning(message: string): void {
-      AtlasFactory.logFactory(message, 3, Atlas.className);
+      AtlasFactory.logFactory(message, LogsEnum.Warning, Atlas.className);
     }
 
     logError(message: string): void {

@@ -1,74 +1,36 @@
+/**
+ * NewTale © 2024
+ */
+
 import DateFactory from "./DateFactory";
+import GenerateIdUtil from "../utils/GenerateIdUtil";
+import GetNameFunctionUtil from "../utils/GetNameFunctionUtil";
+import Cor from "../models/CorConsoleModel";
+import { LogsEnum } from "../models/enum/LogsEnum";
 
 class AtlasFactory {
-   static dateNow: string = `[\x1b[34m ${DateFactory.formatDate(new Date())} \x1b[0m]`;
-
-   private static getCallingMethodName(): string | null {
-      try {
-          throw new Error();
-      } catch (e: any) {
-          const stacks = e?.stack?.split('\n');
-          if (stacks && stacks.length >= 3) {
-              const callerInfo = stacks[4].trim();
-              const regex: RegExp = /at\s+(.+?)\s+\(/;
-              const match = callerInfo.match(regex);
-              if (match && match.length > 1) {
-                  let methodName: string = match[1];
-                  if (methodName.includes("Function.")){
-                     let indice: number = methodName.indexOf("Function.");
-                     let inicio: string = methodName.substring(0, indice);
-                     let fim: string = methodName.substring(indice + "Function.".length);
-                     return (inicio + fim).trim() + "()";
-                  }
-
-                  return methodName;
-              }
-          }
-      }
-      return null;
-  }
-
-  private static generateRandomLogId(): string {
-   const randomNumber1: number = Math.floor(Math.random() * (20 - 10) + 10);
-   const randomChar1: string = String.fromCharCode(Math.floor(Math.random() * 26) + 97);
-
-   const randomNumber2: number = Math.floor(Math.random() * (20 - 10) + 10);
-   const randomChar2: string = String.fromCharCode(Math.floor(Math.random() * 26) + 97);
-
-   const randomNumber3: number = Math.floor(Math.random() * (20 - 10) + 10);
-   const randomChar3: string = String.fromCharCode(Math.floor(Math.random() * 26) + 97);
-
-   const randomNumber4: number = Math.floor(Math.random() * (20 - 10) + 10);
-   const randomChar4: string = String.fromCharCode(Math.floor(Math.random() * 26) + 97);
-
-   const id: string = "atId-" +
-       randomNumber1 + randomChar1 +
-       randomNumber2 + randomChar2 +
-       randomNumber3 + randomChar3 +
-       randomNumber4 + randomChar4;
-
-   return id;
-}
 
    static logFactory(message: string, num: number, path: string): void {
+      const dateNow: string = `${Cor.blue}${DateFactory.formatDate(new Date())}${Cor.break}`;
       switch(num) { 
-         case 1: { 
-            console.log(`${AtlasFactory.dateNow} ${path} [${AtlasFactory.generateRandomLogId()}] @INFO: ${message}`); 
+         case LogsEnum.Info: { 
+            console.log(`[${dateNow}] ${path} [${GetNameFunctionUtil.getCallingMethodName()}] @INFO: ${message}`); 
             break; 
          } 
-         case 2: { 
-            console.log(`\t${AtlasFactory.dateNow} ${path}#\u001B[30m\u001B[43m${AtlasFactory.getCallingMethodName()}\x1b[0m [${AtlasFactory.generateRandomLogId()}] @\x1b[34mDEBUG\x1b[0m: ${message}`);
+         case LogsEnum.Debug: { 
+            console.log(`\t[${dateNow}] ${path}#${Cor.backgroundYellow}${Cor.black}${GetNameFunctionUtil.getCallingMethodName()}${Cor.break} [${GenerateIdUtil.generateRandomLogId()}] @${Cor.blue}DEBUG${Cor.break}: ${message}`);
             break; 
          } 
-         case 3: { 
-            console.log(`${AtlasFactory.dateNow} ${path} [${AtlasFactory.generateRandomLogId()}] @\x1b[33mWARN\x1b[0m: ${message}`); 
+         case LogsEnum.Warning: { 
+            console.log(`[${dateNow}] ${path} [${GenerateIdUtil.generateRandomLogId()}] @${Cor.yellow}WARN${Cor.break}: ${message}`); 
             break; 
          }
          case 4: {
-            console.log(`${AtlasFactory.dateNow} ${path} [${AtlasFactory.generateRandomLogId()}] @\x1b[31mERROR\x1b[0m: ${message}`);
+            console.log(`[${dateNow}] ${path} [${GenerateIdUtil.generateRandomLogId()}] @${Cor.red}ERROR${Cor.break}: ${message}`);
          }
       } 
    }
+
 }
 
 export default AtlasFactory;

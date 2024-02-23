@@ -1,3 +1,7 @@
+/**
+ * NewTale © 2024
+ */
+
 export default class DateFactory{
      static padTo2Digits(num: number){
         return num.toString().padStart(2, '0');
