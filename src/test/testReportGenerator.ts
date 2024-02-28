@@ -3,17 +3,20 @@
  */
 
 import { LogData } from "dto/LogData";
-import { ReportGenerator } from "report/framework/ReportGenerator";
+import { ReportGenerator } from "../report/framework/ReportGenerator";
 import { writeFileSync } from 'fs';
+import Atlas from "../atlas";
+import * as path from 'path'
 
 
 class Index {
     public static run(): void {
+        const atlas = new Atlas(path.resolve(__filename));
         // testar...
 
         // depois de você alterar a classe de factory coloque o atlas.logError() dentro do 
         // método 'generatePDF' e teste!
-        ReportGenerator.generatePDF(new LogData())
+        ReportGenerator.generatePDF(atlas.logError("Erro ao acessar ao back-end HTTP 500", new Error()))
         .then(bytes => {
             if(!bytes) return
             console.log(`Bytes do relatório PDF: ${bytes}`)

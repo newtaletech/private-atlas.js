@@ -1,6 +1,7 @@
 import IAtlasAllConfig from "./interface/IAtlasAllConfig";
 import AtlasFactory from "./factory/AtlasFactory";
 import { LogsEnum } from "./models/enum/LogsEnum";
+import { LogData } from "dto/LogData";
 
 class Atlas {
     static enableConsole: boolean = false;
@@ -28,8 +29,8 @@ class Atlas {
       AtlasFactory.logFactory(message, LogsEnum.Warning, Atlas.className);
     }
 
-    logError(message: string): void {
-      AtlasFactory.logFactory(message, 4, Atlas.className);
+    logError(message: string, erro: Error): LogData {
+      return AtlasFactory.logErrorFactory(message, Atlas.className, erro);
     }
 }
 

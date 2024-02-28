@@ -4,6 +4,7 @@
 
 import { IH_ReportVersion } from "interface/IH_ReportVersion";
 import { LogData } from "./LogData";
+import { PDFDocument } from 'pdf-lib';
 
 export class ReportData {
     private m_relNome: string | undefined;

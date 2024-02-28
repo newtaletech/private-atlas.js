@@ -18,7 +18,7 @@ export class LogData {
     private m_logErrID: string | undefined;
     private m_logErrMsg: string | undefined;
     private m_logErrTtl: string | undefined;
-    private m_logErrTrace: StackTraceElement[] | undefined;
+    private m_logErrTrace: string | undefined;
     private m_logErrDt: Date | undefined;
     private m_logErrTm: Date | undefined;
     private m_logErrTarget: string | undefined;
@@ -43,11 +43,11 @@ export class LogData {
       this.m_logErrMsg = m_logErrMsg;
     }
   
-    public getLogErrTrace(): StackTraceElement[] | undefined {
+    public getLogErrTrace(): string | undefined {
       return this.m_logErrTrace;
     }
   
-    public setLogErrTrace(m_logErrTrace: StackTraceElement[] | undefined) {
+    public setLogErrTrace(m_logErrTrace: string | undefined) {
       this.m_logErrTrace = m_logErrTrace;
     }
   

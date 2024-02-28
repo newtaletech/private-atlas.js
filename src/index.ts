@@ -13,7 +13,7 @@ class Index {
         atlas.logDebug("Bebida rosa");
         atlas.logInfo("Ocklay é o que nois porta");
         atlas.logWarning("Cuidado ela está ficando");
-        atlas.logError("Putts ela tá sensual");
+        atlas.logError("Putts ela tá sensual", new Error);
     }
 }
 

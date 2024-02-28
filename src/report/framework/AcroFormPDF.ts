@@ -2,52 +2,36 @@
  * NewTale © 2024
  */
 
-import { LogData } from "dto/LogData";
-import { IH_ReportVersion } from "interface/IH_ReportVersion";
-import { IH_System } from "system/IH_System";
+import { PDFDocument, rgb } from 'pdf-lib';
+import { LogData } from '../../dto/LogData';
+import { IH_ReportVersion } from '../../interface/IH_ReportVersion';
+import { IH_System } from '../../system/IH_System';
 
-/***
- * Comentário feito por VitorRT:
- * 
- * Você vai mexer aqui também, usei essa estrutura de exemplo, vc só precisa modificar para a lib
- * que estiver usando, n esquece de mudar a tipagem de any para o objeto da lib.
- * 
- * Por favor remover este comentário depois de concluir a tarefa! <3
- */
 export abstract class AcroFormPDF {
-    public static addParametersOnReportInV01p00(pdfDoc: any, ld: LogData) {
-        const form = pdfDoc.getForm();
+  public static async addParametersOnReportInV01p00(pdfDoc: PDFDocument, ld: LogData) {
+    const form = pdfDoc.getForm();
 
-		/**
-		 * Tab - Resumo Atlas
-		 * */
-        form.getTextField('at_plataforma').setText('JS/TS');
-        form.getTextField('at_versao').setText(IH_System.getM_AtlasVer());
-        form.getTextField('at_nome_biblioteca').setText(IH_System.getM_LibName());  
-        form.getTextField('at_report_versao').setText(IH_ReportVersion.RelV1p0.toString()); 
-        
-        /**
-		 * Tab - Mensagem De Erro
-		 * */
-        form.getTextField('at_log_msg').setText(ld.getLogErrStackTraceInString());
+    const fieldsData: Record<string, string> | any = {
+      at_plataforma: 'JS/TS',
+      at_versao: IH_System.getM_AtlasVer(),
+      at_nome_biblioteca: IH_System.getM_LibName(),
+      at_report_versao: IH_ReportVersion.RelV1p0.toString(),
+      at_log_msg: ld.getLogErrStackTraceInString() || '', 
+      at_log_id: ld.getM_logErrID() || '', 
+      at_log_dt_emissao: ld.getLogErrDtInString(),
+      at_log_hr_emissao: ld.getLogErrTmInString(),
+      at_method_called: ld.getM_logErrCallMethod(),
+      at_log_full_target: ld.getM_logErrTarget(),
+      at_log_trace: ld.getLogErrStackTraceInString(),
+      report_dt_emissao: new Date().toString(),
+    };
 
-        /**
-		 * Tab - Informações Sobre O Log De Erro
-		 * */
-        form.getTextField('at_log_id').setText(ld.getM_logErrID());
-        form.getTextField('at_log_dt_emissao').setText(ld.getLogErrDtInString());
-        form.getTextField('at_log_hr_emissao').setText(ld.getLogErrTmInString());
-        form.getTextField('at_method_called').setText(ld.getM_logErrCallMethod());
-
-        /**
-		 * Tab - Stack Trace
-		 * */
-        form.getTextField('at_log_full_target').setText(ld.getM_logErrTarget());
-        form.getTextField('at_log_trace').setText(ld.getLogErrStackTraceInString());
-
-        /**
-		 * Rodapé
-		 * */
-        form.getTextField('report_dt_emissao').setText(new Date().toString());
-    }   
+    for (const fieldName in fieldsData) {
+      const fieldValue = fieldsData[fieldName];
+      const textField = form.getTextField(fieldName);
+      if (textField) {
+        textField.setText(fieldValue);
+      }
+    }
+  }
 }

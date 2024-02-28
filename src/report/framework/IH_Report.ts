@@ -2,11 +2,11 @@
  * NewTale © 2024
  */
 
-import { LogData } from "dto/LogData";
-import { ReportData } from "dto/ReportData";
-import { IH_ReportVersion } from "interface/IH_ReportVersion";
-import { ReportType } from "interface/ReportType";
-import { RepV1p0 } from "report/RepV1p0";
+import { LogData } from "../../dto/LogData";
+import { ReportData } from "../../dto/ReportData";
+import { IH_ReportVersion } from "../../interface/IH_ReportVersion";
+import { ReportType } from "../../interface/ReportType";
+import { RepV1p0 } from "../RepV1p0";
 import { Report } from "./Report";
 import { AcroFormPDF } from "./AcroFormPDF";
 

@@ -3,7 +3,7 @@
  */
 
 export default class GetNameFunctionUtil{
-    static getCallingMethodName(): string | null {
+    static getCallingMethodName(): string | undefined {
         try {
             throw new Error();
         } catch (e: any) {
@@ -25,6 +25,6 @@ export default class GetNameFunctionUtil{
                 }
             }
         }
-        return null;
+        return undefined;
      }
 }

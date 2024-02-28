@@ -3,7 +3,7 @@
  */
 
 export default class Cor{
-    static break: string = "\x1b[0m";
+    static reset: string = "\x1b[0m";
     static blue: string = "\x1b[34m";
     static yellow: string = "\x1b[33m";
     static red: string = "\x1b[31m";
