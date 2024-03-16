@@ -4,7 +4,6 @@
   "description": "Repositório do projeto Atlas",
   "main": "index.js",
   "scripts": {
-    "test": "ts-node ./src/index.ts",
     "dev": "node ./dist/index.js",
     "build": "npx tsc"
   },
@@ -12,8 +11,12 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@types/node": "^20.10.6",
+    "@types/node": "^20.11.17",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "pdf-lib": "^1.17.1",
+    "pspdfkit": "^2024.2.0"
   }
 }
