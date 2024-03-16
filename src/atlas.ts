@@ -1,7 +1,7 @@
 import IAtlasAllConfig from "./interface/IAtlasAllConfig";
 import AtlasFactory from "./factory/AtlasFactory";
 import { LogsEnum } from "./models/enum/LogsEnum";
-import { LogData } from "dto/LogData";
+import { LogData } from "./dto/LogData";
 
 class Atlas {
     static enableConsole: boolean = false;
@@ -18,19 +18,24 @@ class Atlas {
     }
 
     logInfo(message: string): void {
-      AtlasFactory.logFactory(message, LogsEnum.Info, Atlas.className);
+      if(Atlas.enableConsole)
+        AtlasFactory.logFactory(message, LogsEnum.Info, Atlas.className);
     }
 
     logDebug(message: string): void {
-      AtlasFactory.logFactory(message, LogsEnum.Debug, Atlas.className);
+      if(Atlas.enableConsole && Atlas.enableDebug)
+        AtlasFactory.logFactory(message, LogsEnum.Debug, Atlas.className);
     }
 
     logWarning(message: string): void {
-      AtlasFactory.logFactory(message, LogsEnum.Warning, Atlas.className);
+      if(Atlas.enableConsole)
+        AtlasFactory.logFactory(message, LogsEnum.Warning, Atlas.className);
     }
 
     logError(message: string, erro: Error): LogData {
-      return AtlasFactory.logErrorFactory(message, Atlas.className, erro);
+      if(Atlas.enableConsole)
+        return AtlasFactory.logErrorFactory(message, Atlas.className, erro);
+      return new LogData();
     }
 }
 
