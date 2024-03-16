@@ -13,7 +13,8 @@ import * as fs from 'fs/promises';
 export class RepV1p0 extends Report {
     public async geraPDF(ld: LogData): Promise<ReportData> {
         let repData: ReportData = new ReportData()
-        const templatePath = `C:/Users/Eu/OneDrive/Documentos/private-atlas.js/report/template/atlas-error-report-v01p01-template.pdf`;
+        const rootPath = path.resolve(__dirname);
+        const templatePath = `${rootPath}/template/atlas-error-report-v01p01-template.pdf`;
         const templateBytes = await fs.readFile(templatePath);
         const pdfDoc = await PDFDocument.load(templateBytes);
         this.addParameters(pdfDoc, ld);
